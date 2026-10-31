@@ -1,182 +1,109 @@
-using System.ComponentModel.DataAnnotations;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using RedDirtVideo.API.DTOs;
+using RedDirtVideo.API.Services;
+using RedDirtVideo.Domain.Entities;
+using RedDirtVideo.Infrastructure.Data;
 
-namespace RedDirtVideo.API.DTOs;
+namespace RedDirtVideo.API.Controllers;
 
-public class RegisterRequest
+[ApiController]
+[Route("api/v1/[controller]")]
+public class AuthController : ControllerBase
 {
-    [Required]
-    [EmailAddress]
-    public string Email { get; set; } = string.Empty;
+    private readonly RedDirtVideoDbContext _dbContext;
+    private readonly IConfiguration _configuration;
+    private readonly IPasswordHasher _passwordHasher;
+    private readonly ITokenService _tokenService;
 
-    [Required]
-    [MinLength(8)]
-    public string Password { get; set; } = string.Empty;
+    public AuthController(
+        RedDirtVideoDbContext dbContext,
+        IConfiguration configuration,
+        IPasswordHasher passwordHasher,
+        ITokenService tokenService)
+    {
+        _dbContext = dbContext;
+        _configuration = configuration;
+        _passwordHasher = passwordHasher;
+        _tokenService = tokenService;
+    }
 
-    public string? FirstName { get; set; }
-    public string? LastName { get; set; }
-}
+    [HttpPost("register")]
+    public async Task<ActionResult<AuthResponse>> Register([FromBody] RegisterRequest request)
+    {
+        if (await _dbContext.Users.AnyAsync(u => u.Email == request.Email.Trim()))
+        {
+            return Conflict("An account with this email already exists.");
+        }
 
-public class LoginRequest
-{
-    [Required]
-    [EmailAddress]
-    public string Email { get; set; } = string.Empty;
+        var user = new User
+        {
+            Email = request.Email.Trim(),
+            PasswordHash = _passwordHasher.Hash(request.Password),
+            FirstName = request.FirstName,
+            LastName = request.LastName,
+            Role = "USER",
+            EmailVerified = true,
+            Active = true,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow
+        };
 
-    [Required]
-    public string Password { get; set; } = string.Empty;
-}
+        _dbContext.Users.Add(user);
+        await _dbContext.SaveChangesAsync();
 
-public class AuthResponse
-{
-    public Guid UserId { get; set; }
-    public string Token { get; set; } = string.Empty;
-    public int ExpiresIn { get; set; }
-}
+        return Ok(new AuthResponse
+        {
+            UserId = user.Id,
+            Token = _tokenService.Generate(user),
+            ExpiresIn = 86400
+        });
+    }
 
-public class CreateArtistRequest
-{
-    [Required]
-    public string StageName { get; set; } = string.Empty;
-    public string? Genre { get; set; }
-    public string? Bio { get; set; }
-    public string? WebsiteUrl { get; set; }
-    public string? InstagramUrl { get; set; }
-    public string? YoutubeUrl { get; set; }
-}
+    [HttpPost("login")]
+    public async Task<ActionResult<AuthResponse>> Login([FromBody] LoginRequest request)
+    {
+        var user = await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == request.Email.Trim());
+        if (user is null)
+        {
+            return Unauthorized();
+        }
 
-public class UpdateArtistRequest
-{
-    public string? StageName { get; set; }
-    public string? Genre { get; set; }
-    public string? Bio { get; set; }
-    public string? WebsiteUrl { get; set; }
-    public string? InstagramUrl { get; set; }
-    public string? YoutubeUrl { get; set; }
-}
+        if (!_passwordHasher.Verify(request.Password, user.PasswordHash ?? string.Empty))
+        {
+            return Unauthorized();
+        }
 
-public class SongUploadRequest
-{
-    [Required]
-    public Guid ArtistId { get; set; }
+        return Ok(new AuthResponse
+        {
+            UserId = user.Id,
+            Token = _tokenService.Generate(user),
+            ExpiresIn = 86400
+        });
+    }
 
-    [Required]
-    public string Title { get; set; } = string.Empty;
-    public string? Genre { get; set; }
-}
+    [Authorize]
+    [HttpGet("me")]
+    public async Task<ActionResult<object>> Me()
+    {
+        var userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? Guid.Empty.ToString());
+        var user = await _dbContext.Users.FindAsync(userId);
 
-public class LyricsUploadRequest
-{
-    [Required]
-    public string Lyrics { get; set; } = string.Empty;
-}
+        if (user is null)
+        {
+            return NotFound();
+        }
 
-public class CreateProjectRequest
-{
-    [Required]
-    public Guid ArtistId { get; set; }
-
-    [Required]
-    public Guid SongId { get; set; }
-
-    [Required]
-    public string ProjectName { get; set; } = string.Empty;
-
-    public string? VideoStyle { get; set; }
-}
-
-public class FullProjectGenerateRequest
-{
-    [Required]
-    public Guid ArtistId { get; set; }
-
-    [Required]
-    public Guid SongId { get; set; }
-
-    public Guid? VenueId { get; set; }
-    public string Style { get; set; } = "Texas Country";
-    public bool GenerateConcert { get; set; } = true;
-    public bool GenerateMusicVideo { get; set; } = true;
-    public bool GenerateLyricVideo { get; set; } = true;
-    public bool GenerateSocialClips { get; set; } = true;
-}
-
-public class FullProjectGenerateResponse
-{
-    public Guid JobId { get; set; }
-    public string Status { get; set; } = string.Empty;
-    public List<string> EstimatedOutputs { get; set; } = new();
-}
-
-public class ArtistPhotoUploadResponse
-{
-    public Guid PhotoId { get; set; }
-    public string Url { get; set; } = string.Empty;
-}
-
-public class JobStatusResponse
-{
-    public Guid JobId { get; set; }
-    public string Type { get; set; } = string.Empty;
-    public string Status { get; set; } = string.Empty;
-    public int Progress { get; set; }
-}
-
-public class UsageResponse
-{
-    public int CreditsRemaining { get; set; }
-    public int MonthlyCredits { get; set; }
-}
-
-public class CheckoutRequest
-{
-    [Required]
-    public string Plan { get; set; } = "PRO";
-}
-
-public class GenerateConcertRequest
-{
-    [Required]
-    public Guid ProjectId { get; set; }
-
-    [Required]
-    public Guid VenueId { get; set; }
-
-    public string CrowdType { get; set; } = "COUNTRY";
-    public int DurationSeconds { get; set; } = 180;
-}
-
-public class GenerateMusicVideoRequest
-{
-    [Required]
-    public Guid ProjectId { get; set; }
-    public string Style { get; set; } = "Texas Country";
-    public string Resolution { get; set; } = "4K";
-}
-
-public class GenerateLyricVideoRequest
-{
-    [Required]
-    public Guid ProjectId { get; set; }
-}
-
-public class GenerateSocialClipsRequest
-{
-    [Required]
-    public Guid ProjectId { get; set; }
-    public List<string> Platforms { get; set; } = new();
-}
-
-public class CreateBandRequest
-{
-    public bool LeadGuitar { get; set; } = true;
-    public bool SteelGuitar { get; set; } = true;
-    public bool Bass { get; set; } = true;
-    public bool Drums { get; set; } = true;
-    public bool Fiddle { get; set; } = true;
-}
-
-public class CreateArtworkAnimationRequest
-{
-    [Required]
-    public Guid SongId { get; set; }
+        return Ok(new
+        {
+            user.Id,
+            user.Email,
+            user.FirstName,
+            user.LastName,
+            user.Role,
+            user.CompanyName
+        });
+    }
 }
