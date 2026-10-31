@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using RedDirtVideo.Infrastructure.Data;
 
@@ -13,7 +14,7 @@ builder.Services.AddDbContext<RedDirtVideoDbContext>(options =>
 builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer(options =>
     {
-        var key = builder.Configuration["Jwt:Key"] ?? "super-secret-key-change-this-in-production-1234567890";
+        var jwtKey = builder.Configuration["Jwt:Key"] ?? "super-secret-key-change-this-in-production-1234567890";
         var issuer = builder.Configuration["Jwt:Issuer"] ?? "RedDirtVideo";
         var audience = builder.Configuration["Jwt:Audience"] ?? "RedDirtVideoClients";
 
@@ -25,7 +26,7 @@ builder.Services.AddAuthentication("Bearer")
             ValidateIssuerSigningKey = true,
             ValidateLifetime = true,
             IssuerSigningKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(
-                System.Text.Encoding.UTF8.GetBytes(key)),
+                System.Text.Encoding.UTF8.GetBytes(jwtKey)),
             ValidIssuer = issuer,
             ValidAudience = audience,
             ClockSkew = TimeSpan.Zero
