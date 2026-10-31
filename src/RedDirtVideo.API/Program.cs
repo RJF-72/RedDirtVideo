@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using RedDirtVideo.API.Middleware;
+using RedDirtVideo.API.Services;
 using RedDirtVideo.Infrastructure.Data;
 using RedDirtVideo.Infrastructure.Repositories;
 
@@ -17,7 +19,7 @@ builder.Services.AddControllers(options =>
                 kvp => kvp.Key,
                 kvp => kvp.Value!.Errors.Select(e => e.ErrorMessage).ToArray());
 
-        return new Microsoft.AspNetCore.Mvc.BadRequestObjectResult(new
+        return new BadRequestObjectResult(new
         {
             error = "Validation failed.",
             details = errors
@@ -33,6 +35,7 @@ builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 builder.Services.AddScoped<ITokenService, JwtTokenService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IAssetStorageService, LocalAssetStorageService>();
 
 builder.Services.AddDbContext<RedDirtVideoDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -72,6 +75,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 app.UseAuthentication();
 app.UseAuthorization();
 
