@@ -1,0 +1,30 @@
+<svg width="1000" height="1000" viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="badgeBg" x1="170" y1="120" x2="820" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1320"/>
+      <stop offset="0.55" stop-color="#1B2434"/>
+      <stop offset="1" stop-color="#0D1726"/>
+    </linearGradient>
+    <linearGradient id="badgeAccent" x1="200" y1="200" x2="760" y2="780" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E11D48"/>
+      <stop offset="0.5" stop-color="#F97316"/>
+      <stop offset="1" stop-color="#FBBF24"/>
+    </linearGradient>
+    <linearGradient id="badgeGold" x1="210" y1="220" x2="760" y2="770" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FDE68A"/>
+      <stop offset="1" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="80" y="80" width="840" height="840" rx="210" fill="url(#badgeBg)"/>
+  <rect x="110" y="110" width="780" height="780" rx="180" stroke="rgba(255,255,255,0.12)" stroke-width="4"/>
+  <circle cx="500" cy="500" r="270" fill="rgba(255,255,255,0.02)" stroke="url(#badgeAccent)" stroke-width="12"/>
+
+  <path d="M327 316C327 294.461 344.461 277 366 277H479C564.423 277 633 345.577 633 431C633 516.423 564.423 585 479 585H366C344.461 585 327 567.539 327 546V316ZM406 350V511H478C530.019 511 572 469.019 572 417C572 364.981 530.019 323 478 323H406V350Z" fill="url(#badgeAccent)"/>
+  <path d="M454 350H514C563.14 350 602 388.86 602 438V438C602 487.14 563.14 526 514 526H454V350Z" fill="url(#badgeGold)"/>
+  <path d="M336 645L500 248L664 645" stroke="url(#badgeGold)" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M390 540H610" stroke="url(#badgeGold)" stroke-width="34" stroke-linecap="round"/>
+
+  <circle cx="705" cy="323" r="34" fill="url(#badgeGold)"/>
+  <path d="M705 262L717.32 303.68L759 316L717.32 328.32L705 370L692.68 328.32L651 316L692.68 303.68L705 262Z" fill="#F8FAFC"/>
+</svg>

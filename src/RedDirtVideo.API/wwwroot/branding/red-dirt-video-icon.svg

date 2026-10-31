@@ -1,0 +1,35 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="64" y1="48" x2="456" y2="464" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1320"/>
+      <stop offset="0.55" stop-color="#1B2434"/>
+      <stop offset="1" stop-color="#0D1726"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="126" y1="112" x2="386" y2="404" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E11D48"/>
+      <stop offset="0.5" stop-color="#F97316"/>
+      <stop offset="1" stop-color="#FBBF24"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="128" y1="106" x2="388" y2="416" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FDE68A"/>
+      <stop offset="1" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="28" y="28" width="456" height="456" rx="108" fill="url(#bg)"/>
+  <rect x="46" y="46" width="420" height="420" rx="92" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+
+  <circle cx="256" cy="256" r="148" fill="rgba(255,255,255,0.02)" stroke="url(#accent)" stroke-width="6"/>
+  <path d="M176 175C176 165.059 184.059 157 194 157H257C310.771 157 354 200.229 354 254C354 307.771 310.771 351 257 351H194C184.059 351 176 342.941 176 333V175ZM212 191V317H256C287.48 317 313 291.48 313 260C313 228.52 287.48 203 256 203H212V191Z" fill="url(#accent)"/>
+  <path d="M212 191V317H256C287.48 317 313 291.48 313 260C313 228.52 287.48 203 256 203H212V191Z" fill="rgba(255,255,255,0.06)"/>
+  <path d="M250 191H277C299.091 191 317 208.909 317 231V231C317 253.091 299.091 271 277 271H250V191Z" fill="url(#gold)" opacity="0.95"/>
+
+  <path d="M186 355L256 150L326 355" stroke="url(#gold)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M221 300H291" stroke="url(#gold)" stroke-width="18" stroke-linecap="round"/>
+
+  <path d="M170 374H342" stroke="rgba(255,255,255,0.12)" stroke-width="6" stroke-linecap="round"/>
+  <path d="M196 390H316" stroke="rgba(255,255,255,0.08)" stroke-width="4" stroke-linecap="round"/>
+
+  <circle cx="374" cy="157" r="18" fill="url(#gold)"/>
+  <path d="M374 123L381.04 147.96L406 155L381.04 162.04L374 187L366.96 162.04L342 155L366.96 147.96L374 123Z" fill="#F8F8F8" opacity="0.95"/>
+</svg>

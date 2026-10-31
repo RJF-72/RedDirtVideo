@@ -1,0 +1,38 @@
+<svg width="1200" height="420" viewBox="0 0 1200 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="brandBg" x1="52" y1="40" x2="356" y2="352" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1320"/>
+      <stop offset="0.55" stop-color="#1B2434"/>
+      <stop offset="1" stop-color="#0D1726"/>
+    </linearGradient>
+    <linearGradient id="brandAccent" x1="92" y1="92" x2="278" y2="302" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E11D48"/>
+      <stop offset="0.5" stop-color="#F97316"/>
+      <stop offset="1" stop-color="#FBBF24"/>
+    </linearGradient>
+    <linearGradient id="brandGold" x1="98" y1="96" x2="286" y2="300" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FDE68A"/>
+      <stop offset="1" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="40" y="40" width="300" height="300" rx="76" fill="url(#brandBg)"/>
+  <rect x="56" y="56" width="268" height="268" rx="62" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+
+  <circle cx="180" cy="180" r="98" fill="rgba(255,255,255,0.02)" stroke="url(#brandAccent)" stroke-width="5"/>
+  <path d="M131 116C131 108.268 137.268 102 145 102H199C236.451 102 266 131.549 266 169C266 206.451 236.451 236 199 236H145C137.268 236 131 229.732 131 222V116ZM159 130V222H199C219.987 222 237 204.987 237 184C237 163.013 219.987 146 199 146H159V130Z" fill="url(#brandAccent)"/>
+  <path d="M190 130H214C231.673 130 246 144.327 246 162V162C246 179.673 231.673 194 214 194H190V130Z" fill="url(#brandGold)"/>
+
+  <path d="M136 254L180 112L224 254" stroke="url(#brandGold)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M157 212H203" stroke="url(#brandGold)" stroke-width="12" stroke-linecap="round"/>
+
+  <circle cx="256" cy="124" r="12" fill="url(#brandGold)"/>
+  <path d="M256 97L260.51 114.49L278 119L260.51 123.51L256 141L251.49 123.51L234 119L251.49 114.49L256 97Z" fill="#F8FAFC"/>
+
+  <g transform="translate(390 90)">
+    <text x="0" y="90" fill="#F8FAFC" font-size="58" font-weight="800" font-family="Segoe UI, Arial, sans-serif" letter-spacing="2">RED DIRT</text>
+    <text x="0" y="170" fill="#F9C74F" font-size="64" font-weight="900" font-family="Segoe UI, Arial, sans-serif" letter-spacing="2">VIDEO™</text>
+    <rect x="0" y="210" width="214" height="6" rx="3" fill="url(#brandAccent)"/>
+    <text x="0" y="268" fill="#B6C2D9" font-size="28" font-weight="600" font-family="Segoe UI, Arial, sans-serif" letter-spacing="3">FROM LYRICS TO LEGENDARY.</text>
+  </g>
+</svg>

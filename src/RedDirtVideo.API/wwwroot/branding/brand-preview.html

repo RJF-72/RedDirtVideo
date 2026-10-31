@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Red Dirt Video Brand Preview</title>
+    <style>
+      :root {
+        --ink: #0f172a;
+        --panel: #f8fafc;
+        --muted: #475569;
+        --accent: #d11f46;
+        --sun: #fbbf24;
+        --gold: #f59e0b;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+        color: var(--ink);
+      }
+      .wrap {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 32px;
+      }
+      h1 {
+        margin: 0 0 24px;
+        font-size: 2.2rem;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 28px;
+      }
+      .card {
+        background: rgba(255,255,255,0.72);
+        border: 1px solid rgba(15,23,42,0.08);
+        border-radius: 20px;
+        padding: 24px;
+        backdrop-filter: blur(8px);
+      }
+      .card.dark {
+        background: #0b1320;
+        color: #f8fafc;
+      }
+      .card img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .label {
+        display: block;
+        margin-bottom: 16px;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-weight: 700;
+        opacity: 0.7;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>Red Dirt Video Brand System</h1>
+      <div class="grid">
+        <div class="card">
+          <span class="label">Icon</span>
+          <img src="./red-dirt-video-icon.svg" alt="Red Dirt Video icon" />
+        </div>
+        <div class="card">
+          <span class="label">Logo</span>
+          <img src="./red-dirt-video-logo.svg" alt="Red Dirt Video logo" />
+        </div>
+        <div class="card">
+          <span class="label">Wordmark</span>
+          <img src="./red-dirt-video-wordmark.svg" alt="Red Dirt Video wordmark" />
+        </div>
+        <div class="card dark">
+          <span class="label">Badge</span>
+          <img src="./red-dirt-video-badge.svg" alt="Red Dirt Video badge" />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

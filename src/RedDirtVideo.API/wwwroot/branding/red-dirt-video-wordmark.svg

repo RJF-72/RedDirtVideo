@@ -1,0 +1,28 @@
+<svg width="1600" height="520" viewBox="0 0 1600 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="wordmarkAccent" x1="120" y1="100" x2="360" y2="340" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E11D48"/>
+      <stop offset="0.5" stop-color="#F97316"/>
+      <stop offset="1" stop-color="#FBBF24"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(50 60)">
+    <rect x="0" y="0" width="360" height="360" rx="92" fill="#0B1320"/>
+    <rect x="20" y="20" width="320" height="320" rx="76" stroke="rgba(255,255,255,0.12)" stroke-width="3"/>
+    <circle cx="180" cy="180" r="118" fill="rgba(255,255,255,0.02)" stroke="url(#wordmarkAccent)" stroke-width="6"/>
+    <path d="M120 120C120 110.059 128.059 102 138 102H200C234.242 102 262 129.758 262 164C262 198.242 234.242 226 200 226H138C128.059 226 120 217.941 120 208V120ZM148 134V212H198C216.78 212 232 196.78 232 178C232 159.22 216.78 144 198 144H148V134Z" fill="url(#wordmarkAccent)"/>
+    <path d="M170 134H212C231.882 134 248 150.118 248 170V170C248 189.882 231.882 206 212 206H170V134Z" fill="#F9C74F"/>
+    <path d="M125 252L180 110L235 252" stroke="#F9C74F" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M148 214H212" stroke="#F9C74F" stroke-width="16" stroke-linecap="round"/>
+    <circle cx="262" cy="122" r="15" fill="#F9C74F"/>
+    <path d="M262 92L267.45 111.55L287 117L267.45 122.45L262 142L256.55 122.45L237 117L256.55 111.55L262 92Z" fill="#F8FAFC"/>
+  </g>
+
+  <g transform="translate(470 130)">
+    <text x="0" y="110" fill="#0F172A" font-size="86" font-weight="900" font-family="Segoe UI, Arial, sans-serif" letter-spacing="2">RED DIRT</text>
+    <text x="0" y="215" fill="#C2410C" font-size="96" font-weight="900" font-family="Segoe UI, Arial, sans-serif" letter-spacing="2">VIDEO™</text>
+    <rect x="0" y="262" width="270" height="8" rx="4" fill="url(#wordmarkAccent)"/>
+    <text x="0" y="330" fill="#475569" font-size="32" font-weight="700" font-family="Segoe UI, Arial, sans-serif" letter-spacing="4">FROM LYRICS TO LEGENDARY.</text>
+  </g>
+</svg>
