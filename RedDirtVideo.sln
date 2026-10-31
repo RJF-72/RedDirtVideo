@@ -1,0 +1,33 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-DBBC-4F11-9F8B-0000A2D8C00A}") = "RedDirtVideo.API", "src/RedDirtVideo.API/RedDirtVideo.API.csproj", "{D70B9ED8-3B4A-469A-B5A2-320E39F44B7F}"
+EndProject
+Project("{FAE04EC0-DBBC-4F11-9F8B-0000A2D8C00A}") = "RedDirtVideo.Domain", "src/RedDirtVideo.Domain/RedDirtVideo.Domain.csproj", "{A63299A7-E95B-4BA0-A0FD-7F4A0F0AFD11}"
+EndProject
+Project("{FAE04EC0-DBBC-4F11-9F8B-0000A2D8C00A}") = "RedDirtVideo.Infrastructure", "src/RedDirtVideo.Infrastructure/RedDirtVideo.Infrastructure.csproj", "{B82AF849-A3DF-45C8-A4B7-01A9CA6CDB6A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D70B9ED8-3B4A-469A-B5A2-320E39F44B7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D70B9ED8-3B4A-469A-B5A2-320E39F44B7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D70B9ED8-3B4A-469A-B5A2-320E39F44B7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D70B9ED8-3B4A-469A-B5A2-320E39F44B7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A63299A7-E95B-4BA0-A0FD-7F4A0F0AFD11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A63299A7-E95B-4BA0-A0FD-7F4A0F0AFD11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A63299A7-E95B-4BA0-A0FD-7F4A0F0AFD11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A63299A7-E95B-4BA0-A0FD-7F4A0F0AFD11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B82AF849-A3DF-45C8-A4B7-01A9CA6CDB6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B82AF849-A3DF-45C8-A4B7-01A9CA6CDB6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B82AF849-A3DF-45C8-A4B7-01A9CA6CDB6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B82AF849-A3DF-45C8-A4B7-01A9CA6CDB6A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

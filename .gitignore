@@ -1,0 +1,19 @@
+# .gitignore
+
+bin/
+obj/
+.vs/
+.vscode/
+*.user
+*.suo
+*.cache
+*.db
+*.db-shm
+*.db-wal
+*.log
+*.pdb
+*.mdb
+packages/
+TestResults/
+.DS_Store
+Thumbs.db
