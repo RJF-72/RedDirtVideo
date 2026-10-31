@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using RedDirtVideo.Infrastructure.Data;
 using RedDirtVideo.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -32,7 +34,7 @@ builder.Services.AddScoped<ITokenService, JwtTokenService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 
-builder.Services.AddDbContext<RedDirtVideo.Infrastructure.Data.RedDirtVideoDbContext>(options =>
+builder.Services.AddDbContext<RedDirtVideoDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddAuthentication("Bearer")

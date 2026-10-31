@@ -1,3 +1,4 @@
+using RedDirtVideo.Domain.Entities;
 using RedDirtVideo.Infrastructure.Data;
 
 namespace RedDirtVideo.Infrastructure.Repositories;
